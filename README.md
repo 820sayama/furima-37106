@@ -23,10 +23,10 @@
 
 | Column             | Type           | Options                      |
 | ------------------ | ------------   | --------------------------   |
-| user               | string         | NOT NULL , 外部キー           |
+| user               | references     | NOT NULL , 外部キー           |
 
 # send_addressテーブル
 
 | Column             | Type           | Options                      |
 | ------------------ | ------------   | --------------------------   |
-| user               | string         | NOT NULL , 外部キー           |
+| user               | references     | NOT NULL , 外部キー           |
