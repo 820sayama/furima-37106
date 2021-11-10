@@ -19,14 +19,18 @@
 | category           | text           | NOT NULL                     |
 | price              | string         | NOT NULL,                    ｜
 
-# buyテーブル
+# ordersテーブル
 
 | Column             | Type           | Options                      |
 | ------------------ | ------------   | --------------------------   |
-| user               | references     | NOT NULL , 外部キー           |
+| item_id            | references     | NOT NULL , 外部キー           |
+| buyer_user_id      | references     | NOT NULL , 外部キー           |
 
-# send_addressテーブル
+# deliver_addressテーブル
 
 | Column             | Type           | Options                      |
 | ------------------ | ------------   | --------------------------   |
-| user               | references     | NOT NULL , 外部キー           |
+| user_id            | references     | NOT NULL , 外部キー           |
+| address            | string         | NOT NULL                     |
+| telephone          | string         | NOT NULL , ユニーク制約        |
+
