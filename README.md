@@ -16,24 +16,20 @@
          
 
 has_many :items
-has_many :orders dependent: :destroy
 
 # itemsテーブル
 
 
 | Column             | Type           | Options                      |
 | ------------------ | ------------   | --------------------------   |
-| category_id        | integer        | null: false, 外部キー            |
-| shipping_id	       | integer        | null: false, 外部キー            |
-| brand_id           | integer        | null: false, 外部キー            |
-| seller_user_id     | integer        | null: false, 外部キー            |
-| name               |  string        | null: falseL,                    |
-| text               | references	    | null: falseL, 外部キー            
-| condition_id        | integer        | null: false,                    |
-| price              | integer        | null: falseL,                    |
-| trading_status	   | integer	      | null: false,                    |
-| completed_at       | datetime	      | null: false,                    |
-
+| products           | string    　　 | null: false,          |
+| price              | integer   　　 | null: false,            |
+| explanation        | text       　　| null: false,           |
+| category_id        | integer        | null: false,            |
+| delivery_fee       |  integer     　 | null: falseL,                  |  
+| prefecture_id   | integer        | null: false,                    |
+| delivery_days      | integer        | null: falseL,                    |
+| user        　　　  | integer        | null: falseL,  Foreign key                    |
 
 belongs_to :user
 has_one :order
@@ -44,23 +40,23 @@ has_one :order
 
 | Column             | Type           | Options                      |
 | ------------------ | ------------   | --------------------------   |
-| buyer_user         | references     | null: false,外部キー             |
-| item               | references     | null: false ,外部キー            |
+| user               | references     | null: false,Foreign key          |
+| item               | references     | null: false ,Foreign key           |
 
-belongs_to :user
+
 belongs_to :item
-has_many :deliver_address
+has_one :deliver_address
 # deliver_addressテーブル
 
 | Column             | Type           | Options                      |
 | ------------------ | ------------   | --------------------------   |
-| user               | references     | null: false ,           |
+| user               | references     | null: false , Foreign key           |
 | zip_code           | string       | null: false                     |
 | prefecture_id      | string         | null: false                    |
 | city               | string         | null: false                    |
 | address1           | string         | null: false                     |
 | address2           | string         |                              |
-| telephone          | string         | null: false ,                   |
+| telephone          | string         | null: false                   |
 
 belongs_to :orders
 
