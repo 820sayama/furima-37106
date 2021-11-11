@@ -4,19 +4,18 @@
 
 | Column             | Type           | Options                      |
 | ------------------ | ------------   | --------------------------   |
-| email              | string         | NOT NULL,unique: true        |
-| encrypted_password | string         | NOT NULL                     |
-| nickname           | string         | NOT NULL                     |
-| first_name         | string         | NOT NULL                     |
-| last_name          | string         | NOT NULL                     |
-| first_name_kana    | string         | NOT NULL                     |
-| last_name_kana     | string         | NOT NULL                     |
-| birthday_day       | date        | NOT NULL                     |
-| phone_num          | string         | NOT NULL                     |
+| email              | string         | null: falseL,unique: true        |
+| encrypted_password | string         | null: false                    |
+| nickname           | string         | null: false                    |
+| first_name         | string         |  null: false                    |
+| last_name          | string         |  null: false                  |
+| first_name_kana    | string         |  null: false                |
+| last_name_kana     | string         |   null: false                  |
+| birthday_day       | date           |   null: false                   |
+
          
 
 has_many :items
-has_one :deliver_addresses dependent: :destroy
 has_many :orders dependent: :destroy
 
 # itemsテーブル
@@ -24,16 +23,16 @@ has_many :orders dependent: :destroy
 
 | Column             | Type           | Options                      |
 | ------------------ | ------------   | --------------------------   |
-| category_id        | integer        | NOT NULL, 外部キー            |
-| shipping_id	       | integer        | NOT NULL, 外部キー            |
-| brand_id           | integer        | NOT NULL, 外部キー            |
-| seller_user_id     | integer        | NOT NULL, 外部キー            |
-| name               |  string        | NOT NULL,                    |
-| text               | references	    | NOT NULL,                    |
-| condition          | integer        | NOT NULL,                    |
-| price              | integer        | NOT NULL,                    |
-| trading_status	   | integer	      | NOT NULL,                    |
-| completed_at       | datetime	      | NOT NULL,                    |
+| category_id        | integer        | null: false, 外部キー            |
+| shipping_id	       | integer        | null: false, 外部キー            |
+| brand_id           | integer        | null: false, 外部キー            |
+| seller_user_id     | integer        | null: false, 外部キー            |
+| name               |  string        | null: falseL,                    |
+| text               | references	    | null: falseL, 外部キー            
+| condition_id        | integer        | null: false,                    |
+| price              | integer        | null: falseL,                    |
+| trading_status	   | integer	      | null: false,                    |
+| completed_at       | datetime	      | null: false,                    |
 
 
 belongs_to :user
@@ -45,26 +44,25 @@ has_one :order
 
 | Column             | Type           | Options                      |
 | ------------------ | ------------   | --------------------------   |
-| buyer_user         | references     | NOT NULL,外部キー             |
-| item               | references     | NOT NULL ,外部キー            |
+| buyer_user         | references     | null: false,外部キー             |
+| item               | references     | null: false ,外部キー            |
 
 belongs_to :user
 belongs_to :item
-
+has_many :deliver_address
 # deliver_addressテーブル
 
 | Column             | Type           | Options                      |
 | ------------------ | ------------   | --------------------------   |
-| user               | references     | NOT NULL , 外部キー           |
-| zip_code           | integer        | NOT NULL                     |
-| prefecture         | string         | NOT NULL                     |
-| city               | string         | NOT NULL                     |
-| address1           | string         | NOT NULL                     |
+| user               | references     | null: false ,           |
+| zip_code           | string       | null: false                     |
+| prefecture_id      | string         | null: false                    |
+| city               | string         | null: false                    |
+| address1           | string         | null: false                     |
 | address2           | string         |                              |
-| telephone          | string         | NOT NULL ,                   |
+| telephone          | string         | null: false ,                   |
 
-belongs_to :user
-
+belongs_to :orders
 
 
 
