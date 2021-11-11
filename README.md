@@ -14,7 +14,7 @@
 | birthday_day       | date           |   null: false                   |
 
          
-
+has_many :order
 has_many :items
 
 # itemsテーブル
@@ -26,10 +26,10 @@ has_many :items
 | price              | integer   　　 | null: false,            |
 | explanation        | text       　　| null: false,           |
 | category_id        | integer        | null: false,            |
-| delivery_fee       |  integer     　 | null: falseL,                  |  
+| delivery_fee_id       |  integer     　 | null: falseL,                  |  
 | prefecture_id   | integer        | null: false,                    |
-| delivery_days      | integer        | null: falseL,                    |
-| user        　　　  | integer        | null: falseL,  Foreign key                    |
+| delivery_days_id      | integer        | null: falseL,                    |
+| user        　　　  | references       | null: falseL,  Foreign key                    |
 
 belongs_to :user
 has_one :order
@@ -52,13 +52,13 @@ has_one :deliver_address
 | ------------------ | ------------   | --------------------------   |
 | user               | references     | null: false , Foreign key           |
 | zip_code           | string       | null: false                     |
-| prefecture_id      | string         | null: false                    |
+| prefecture_id      | integer        | null: false                    |
 | city               | string         | null: false                    |
 | address1           | string         | null: false                     |
 | address2           | string         |                              |
 | telephone          | string         | null: false                   |
 
-belongs_to :orders
+belongs_to :order
 
 
 
