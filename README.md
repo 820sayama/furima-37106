@@ -4,7 +4,7 @@
 
 | Column             | Type           | Options                      |
 | ------------------ | ------------   | --------------------------   |
-| email              | string         | null: falseL,unique: true        |
+| email              | string         | null: false,unique: true        |
 | encrypted_password | string         | null: false                    |
 | nickname           | string         | null: false                    |
 | first_name         | string         |  null: false                    |
@@ -14,7 +14,7 @@
 | birthday_day       | date           |   null: false                   |
 
          
-has_many :order
+has_many :orders
 has_many :items
 
 # itemsテーブル
@@ -22,13 +22,14 @@ has_many :items
 
 | Column             | Type           | Options                      |
 | ------------------ | ------------   | --------------------------   |
-| products           | string    　　 | null: false,          |
+| product          | string    　　 | null: false,          |
 | price              | integer   　　 | null: false,            |
 | explanation        | text       　　| null: false,           |
 | category_id        | integer        | null: false,            |
 | delivery_fee_id       |  integer     　 | null: false,                  |  
 | prefecture_id   | integer        | null: false,                    |
-| delivery_days_id      | integer        | null: false,                    |            |
+| delivery_day_id      | integer        | null: false,                    |            |
+| condition_id       |  integer     　 | null: false,                  | 
 | user        　　　  | references       | null: false,  Foreign key                    |
 
 belongs_to :user
@@ -54,8 +55,8 @@ has_one :deliver_address
 | zip_code           | string       | null: false                     |
 | prefecture_id      | integer        | null: false                    |
 | city               | string         | null: false                    |
-| address1           | string         | null: false                     |
-| address2           | string         |                              |
+| address         　　| string         | null: false                     |
+| building           | string         |                              |
 | telephone          | string         | null: false                   |
 | order              | references     | null: false , Foreign key     
 belongs_to :order
