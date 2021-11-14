@@ -30,7 +30,7 @@ has_many :items
 | prefecture_id   | integer        | null: false                    |
 | delivery_day_id      | integer        | null: false                   |            |
 | condition_id       |  integer     　 | null: false                 | 
-| user        　　　  | references       | null: false,  Foreign_key: true                    |
+| user        　　　  | references       | null: false,  foreign_key: true                    |
 
 belongs_to :user
 has_one :order
@@ -57,7 +57,7 @@ has_one :deliver_address
 | address         　　| string         | null: false                     |
 | building           | string         |                              |
 | telephone          | string         | null: false                   |
-| order              | references     | null: false, Foreign_key: true     
+| order              | references     | null: false, foreign_key: true     
 belongs_to :order
 
 
