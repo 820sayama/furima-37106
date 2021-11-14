@@ -26,11 +26,10 @@ has_many :items
 | price              | integer   　　 | null: false,            |
 | explanation        | text       　　| null: false,           |
 | category_id        | integer        | null: false,            |
-| delivery_fee_id       |  integer     　 | null: falseL,                  |  
+| delivery_fee_id       |  integer     　 | null: false,                  |  
 | prefecture_id   | integer        | null: false,                    |
-| delivery_days_id      | integer        | null: falseL,                    |
-| image_id           | integer        | null: false,                    |
-| user        　　　  | references       | null: falseL,  Foreign key                    |
+| delivery_days_id      | integer        | null: false,                    |            |
+| user        　　　  | references       | null: false,  Foreign key                    |
 
 belongs_to :user
 has_one :order
@@ -44,7 +43,7 @@ has_one :order
 | user               | references     | null: false,Foreign key          |
 | item               | references     | null: false ,Foreign key           |
 
-
+belogs_to :user
 belongs_to :item
 has_one :deliver_address
 # deliver_addressテーブル
