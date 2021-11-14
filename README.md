@@ -29,6 +29,7 @@ has_many :items
 | delivery_fee_id       |  integer     　 | null: falseL,                  |  
 | prefecture_id   | integer        | null: false,                    |
 | delivery_days_id      | integer        | null: falseL,                    |
+| image_id   | integer        | null: false,                    |
 | user        　　　  | references       | null: falseL,  Foreign key                    |
 
 belongs_to :user
