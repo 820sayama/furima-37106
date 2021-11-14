@@ -57,7 +57,7 @@ has_one :deliver_address
 | address1           | string         | null: false                     |
 | address2           | string         |                              |
 | telephone          | string         | null: false                   |
-
+| order              | references     | null: false , Foreign key     
 belongs_to :order
 
 
