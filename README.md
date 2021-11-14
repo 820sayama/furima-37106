@@ -22,15 +22,15 @@ has_many :items
 
 | Column             | Type           | Options                      |
 | ------------------ | ------------   | --------------------------   |
-| product          | string    　　 | null: false,          |
-| price              | integer   　　 | null: false,            |
-| explanation        | text       　　| null: false,           |
-| category_id        | integer        | null: false,            |
-| delivery_fee_id       |  integer     　 | null: false,                  |  
-| prefecture_id   | integer        | null: false,                    |
-| delivery_day_id      | integer        | null: false,                    |            |
-| condition_id       |  integer     　 | null: false,                  | 
-| user        　　　  | references       | null: false,  Foreign key                    |
+| product          | string    　　 | null: false        |
+| price              | integer   　　 | null: false            |
+| explanation        | text       　　| null: false          |
+| category_id        | integer        | null: false            |
+| delivery_fee_id       |  integer     　 | null: false                  |  
+| prefecture_id   | integer        | null: false                    |
+| delivery_day_id      | integer        | null: false                   |            |
+| condition_id       |  integer     　 | null: false                 | 
+| user        　　　  | references       | null: false,  Foreign_ key: true                    |
 
 belongs_to :user
 has_one :order
@@ -41,24 +41,23 @@ has_one :order
 
 | Column             | Type           | Options                      |
 | ------------------ | ------------   | --------------------------   |
-| user               | references     | null: false,Foreign key          |
-| item               | references     | null: false ,Foreign key           |
+| user               | references     | null: false,Foreign_ key: true         |
+| item               | references     | null: false ,Foreign_ key: true           |
 
-belogs_to :user
+belongs_to :user
 belongs_to :item
 has_one :deliver_address
 # deliver_addressテーブル
 
 | Column             | Type           | Options                      |
 | ------------------ | ------------   | --------------------------   |
-| user               | references     | null: false                  |
 | zip_code           | string       | null: false                     |
 | prefecture_id      | integer        | null: false                    |
 | city               | string         | null: false                    |
 | address         　　| string         | null: false                     |
 | building           | string         |                              |
 | telephone          | string         | null: false                   |
-| order              | references     | null: false , Foreign key     
+| order              | references     | null: false, Foreign_ key: true     
 belongs_to :order
 
 
