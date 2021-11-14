@@ -51,7 +51,7 @@ has_one :deliver_address
 
 | Column             | Type           | Options                      |
 | ------------------ | ------------   | --------------------------   |
-| user               | references     | null: false , Foreign key           |
+| user               | references     | null: false                  |
 | zip_code           | string       | null: false                     |
 | prefecture_id      | integer        | null: false                    |
 | city               | string         | null: false                    |
