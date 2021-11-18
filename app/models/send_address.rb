@@ -1,2 +1,0 @@
-class SendAddress < ApplicationRecord
-end
