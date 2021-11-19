@@ -61,7 +61,7 @@ require 'rails_helper'
    @user.valid?
    expect(@user.errors.full_messages).to include("Email can't be blank")
      end
-     it "encrypted_passwordが空では登録できない" do
+     it "passwordが空では登録できない" do
       @user.password = " "
       @user.valid?
       expect(@user.errors.full_messages).to include("Password can't be blank")
@@ -81,7 +81,7 @@ require 'rails_helper'
      it "first_nameが空では登録できない" do
       @user.first_name = " "
       @user.valid?
-      #expect(@user.errors.full_messages).to include("Name can't be blank")
+      expect(@user.errors.full_messages).to include("First name can't be blank", "First name is invalid")
     end
      it "last_nameが空では登録できない" do
       @user.last_name = " "
@@ -103,5 +103,8 @@ require 'rails_helper'
       @user.valid?
       expect(@user.errors.full_messages).to include("Birthday day can't be blank")  
     end
+    it "全ての項目が入力されていれば登録できる" do
+      expect(@user).to be_valid
+    end 
   end
 end
