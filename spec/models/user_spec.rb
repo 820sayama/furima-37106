@@ -5,6 +5,7 @@ require 'rails_helper'
   end
     
    describe "ユーザー新規登録" do
+    context 'ユーザー登録ができない時' do
     it "重複したメールアドレスは登録できない" do
       @user.save
       another_user = FactoryBot.build(:user, email: @user.email)
@@ -103,8 +104,11 @@ require 'rails_helper'
       @user.valid?
       expect(@user.errors.full_messages).to include("Birthday day can't be blank")  
     end
+  end
+  context 'ユーザー登録ができる時' do
     it "全ての項目が入力されていれば登録できる" do
       expect(@user).to be_valid
     end 
+   end
   end
 end
