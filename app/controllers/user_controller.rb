@@ -2,9 +2,6 @@ class UserController < ApplicationController
   def edit
   end
 
-def new
-end
-
   def update
     current_user.update(user_params)
   end
