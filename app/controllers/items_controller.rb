@@ -5,13 +5,13 @@ class ItemsController < ApplicationController
   end  
 
   def show
+    @item = Item.find(params[:id])
+
   end
 
   def new
     @item = Item.new
     
-  end  
-  def show
   end  
   def create
     @item = Item.new(items_params)
