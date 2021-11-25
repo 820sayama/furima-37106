@@ -48,15 +48,36 @@ it "condition_idがid1だと登録できない" do
   @item.valid?
   expect(@item.errors.full_messages).to include("Condition must be other than 1")  
 end 
+it 'ユーザーが紐付いていなければ投稿できない' do
+  @item.user = nil
+  @item.valid?
+  expect(@item.errors.full_messages).to include('User must exist')
+end
 end
 context '商品の出品ができる時' do
   it "全ての項目が入力されていれば登録できる" do  
     expect(@item).to be_valid
   end
+  it "商品価格が299円以下では出品できない" do
+@item.price = 299
+@item.valid?
+expect(@item.errors.full_messages).to include('Price is invalid')
+ end
+ it "価格の範囲が9,999,999円を超えると出品できない" do
+  @item.price = 10_000_000
+  @item.valid?
+  expect(@item.errors.full_messages).to include("Price is invalid")
+end
+ it "全角数字では出品できない" do
+  @item.price = "１００００"
+  @item.valid?
+  expect(@item.errors.full_messages).to include("Price is invalid")
+end
+ end
 end
 end
-end
-
+#商品価格が10_000_000円以上では出品できない
+#商品価格が半角英数字以外では出品できない
 
 
 

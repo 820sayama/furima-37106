@@ -11,7 +11,7 @@ class Item < ApplicationRecord
 
  validates :image, presence: true
  validates :product, presence: true
- validates :price, presence: true
+ validates :price, presence: true,numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 1000000, message: "is invalid"}
  validates :explanation, presence: true
  validates :category_id, numericality: { other_than: 1 } 
  validates :delivery_fee_id, numericality: { other_than: 1 } 
