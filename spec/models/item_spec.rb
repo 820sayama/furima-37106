@@ -43,6 +43,11 @@ it "delivery_day_idがid1だと登録できない" do
   @item.valid?
   expect(@item.errors.full_messages).to include("Delivery day must be other than 1")   
 end 
+it "prefecture_idがid1だと登録できない" do
+  @item.prefecture_id = 1
+  @item.valid?
+  expect(@item.errors.full_messages).to include("Prefecture must be other than 1") 
+end
 it "condition_idがid1だと登録できない" do
   @item.condition_id = 1
   @item.valid?
