@@ -1,11 +1,17 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:create,:new,:edit]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :move_to_index,only: [:edit,:desyroy]
   def index
     @item = Item.includes(:user).order("created_at DESC")
   end  
 
   def show
+  end
+
+  def destroy
+      @item.destroy
+      redirect_to root_path
   end
 
 def update
@@ -18,8 +24,6 @@ def update
   end
 
   def edit
-    if @item.user_id == current_user.id && @item.order.nil?
-    else
       redirect_to root_path
     end
   end
@@ -43,4 +47,7 @@ private
   def set_item
     @item = Item.find(params[:id])
   end
+  def move_to_index
+    if @item.user_id == current_user.id 
+  end    
 end
