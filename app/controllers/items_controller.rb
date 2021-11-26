@@ -24,7 +24,6 @@ def update
   end
 
   def edit
-    else
       redirect_to root_path
     end
   end
