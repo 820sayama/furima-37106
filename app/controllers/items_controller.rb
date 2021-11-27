@@ -24,9 +24,12 @@ def update
   end
 
   def edit
+    if @item.user_id == current_user.id && @item.order.nil?
+    else
       redirect_to root_path
-    end
   end
+end
+end
   def new
     @item = Item.new
     
@@ -40,7 +43,6 @@ def update
     end
   end
 private
-
   def items_params
     params.require(:item).permit(:product, :image,:price,:explanation,:category_id,:delivery_fee_id, :prefecture_id,:delivery_day_id,:condition_id).merge(user_id: current_user.id)
   end
