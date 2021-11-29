@@ -10,12 +10,12 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-      @item.destroy
-      redirect_to root_path
+    @item.destroy
+    redirect_to root_path
   end
 
-def update
-  @item.update(items_params)
+  def update
+    @item.update(items_params)
     if @item.valid?
       redirect_to item_path(items_params)
     else
@@ -27,12 +27,10 @@ def update
     if @item.user_id == current_user.id && @item.order.nil?
     else
       redirect_to root_path
+    end
   end
-end
-end
   def new
     @item = Item.new
-    
   end  
   def create
     @item = Item.new(items_params)
@@ -42,6 +40,7 @@ end
       render :new
     end
   end
+end
 private
   def items_params
     params.require(:item).permit(:product, :image,:price,:explanation,:category_id,:delivery_fee_id, :prefecture_id,:delivery_day_id,:condition_id).merge(user_id: current_user.id)
