@@ -23,6 +23,10 @@ class ItemsController < ApplicationController
     end
   end
 
+  def search
+    @tweets = Tweet.search(params[:keyword])
+  end
+  
   def edit
     if @item.user_id == current_user.id && @item.order.nil?
 

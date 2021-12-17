@@ -9,7 +9,6 @@ class Item < ApplicationRecord
   belongs_to :delivery_day
   belongs_to :condition
 
-
  validates :image, presence: true
  validates :product, presence: true
  validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
@@ -19,4 +18,11 @@ class Item < ApplicationRecord
  validates :prefecture_id, numericality: { other_than: 1 } 
  validates :delivery_day_id, numericality: { other_than: 1 } 
  validates :condition_id, numericality: { other_than: 1 } 
+  def self.search(search)
+  if search != ""
+    Item.where('text LIKE(?)', "%#{search}%")
+  else
+    Item.all
+  end
+ end
 end
