@@ -32,8 +32,7 @@ has_many :items
 | condition_id       |  integer     　 | null: false                 | 
 | user        　　　  | references       | null: false,  foreign_key: true                    |
 
-belongs_to :user
-has_one :order
+
 
 
 
